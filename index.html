@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kanvas Masters</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Kanvas Masters prints, frames and installs large-format portraits, gallery walls and art for homes and offices.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500;600;700;800&family=Figtree:wght@400;500;600&display=swap">
+<style>
+/* DRAFT. Styled on the Kanvas Masters logo: red square K mark on black, heavy white KANVAS, widely spaced MASTERS.
+   Layout: every photo sits in a black frame with a red hairline, like the pieces on his walls. One deliberate dark look. */
+:root {
+  --wall: #000000;       /* page, the logo's black */
+  --wall-2: #111111;     /* raised panels */
+  --ink: #ffffff;        /* white of the wordmark */
+  --muted: #b0b0b0;
+  --line: #262626;
+  --red: #f01a1a;        /* the K mark red */
+  --frame: #050505;
+  --display: "Poppins", "Arial Black", Impact, sans-serif;
+  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { animation: none !important; transition: none !important; } }
+body { margin: 0; background: var(--wall); color: var(--ink); font-family: var(--body); font-size: 17px; line-height: 1.6; -webkit-font-smoothing: antialiased; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--red); outline-offset: 3px; border-radius: 4px; }
+h1, h2, h3 { font-family: var(--display); font-weight: 800; text-transform: uppercase; line-height: .98; margin: 0; text-wrap: balance; }
+h2 { font-size: clamp(2rem, 5vw, 3.4rem); }
+p { margin: 0; }
+.outline { color: transparent; -webkit-text-stroke: 2px var(--ink); }
+.wrap { max-width: 1180px; margin: 0 auto; padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+.masters { font-family: var(--display); font-weight: 700; font-size: .78rem; letter-spacing: .5em; text-transform: uppercase; color: var(--ink); }
+.btn { display: inline-flex; align-items: center; gap: .55em; padding: .85em 1.4em; font-family: var(--display); font-weight: 800; font-size: .88rem; letter-spacing: .06em; text-transform: uppercase; text-decoration: none; border: 2px solid var(--ink); border-radius: 3px; cursor: pointer; background: none; color: var(--ink); }
+.btn.red { background: var(--red); border-color: var(--red); color: #fff; }
+.btn:hover { filter: brightness(1.1); }
+
+/* Frame: black moulding, gold hairline, the look of his finished pieces */
+.frame { position: relative; margin: 0; background: var(--frame); padding: 8px; box-shadow: 0 0 0 1px #000, 0 18px 40px rgba(0,0,0,.55); max-width: 100%; }
+.frame::after { content: ""; position: absolute; inset: 8px; border: 1px solid color-mix(in srgb, var(--red) 55%, transparent); pointer-events: none; }
+.frame img, .frame video { display: block; width: 100%; height: 100%; object-fit: cover; }
+
+/* Header */
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--wall); }
+header { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: color-mix(in srgb, var(--wall) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+header .wrap { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding-block: 12px; }
+.brand { display: flex; align-items: center; gap: 12px; text-decoration: none; }
+.brand img { width: 42px; height: 42px; flex: none; display: block; }
+.wordmark { display: grid; line-height: 1; }
+.wordmark b { font-family: var(--display); font-weight: 800; font-size: 1.25rem; letter-spacing: .02em; }
+.wordmark span { font-family: var(--display); font-weight: 500; font-size: .6rem; letter-spacing: .62em; color: var(--ink); margin-top: 3px; }
+nav { display: flex; align-items: center; gap: 24px; font-weight: 500; }
+nav a:not(.btn) { text-decoration: none; color: var(--muted); }
+nav a:not(.btn):hover { color: var(--ink); }
+@media (max-width: 760px) { nav a:not(.btn) { display: none; } nav .btn { padding: .7em 1em; } }
+
+/* Hero */
+.hero .wrap { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; padding-block: 64px 80px; }
+.hero h1 { font-size: clamp(2.6rem, 7.4vw, 5.6rem); margin-top: 18px; }
+.hero h1 em { font-style: normal; color: var(--red); }
+.hero .lead { margin-top: 24px; max-width: 44ch; font-size: 1.15rem; color: var(--muted); }
+.hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+.hero .frame { aspect-ratio: 9 / 16; max-height: 640px; justify-self: center; width: min(100%, 360px); transform: rotate(1.2deg); }
+.hero .tag { position: absolute; z-index: 2; left: -14px; bottom: 36px; background: var(--red); color: #fff; font-family: var(--display); font-weight: 800; font-size: .78rem; letter-spacing: .08em; text-transform: uppercase; padding: 8px 14px; transform: rotate(-3deg); }
+@media (max-width: 860px) { .hero .wrap { grid-template-columns: 1fr; gap: 40px; padding-block: 40px 64px; } }
+
+/* Ticker */
+.ticker { background: var(--red); color: #fff; overflow: hidden; white-space: nowrap; font-family: var(--display); font-weight: 800; font-size: 1.3rem; text-transform: uppercase; padding-block: 12px; }
+.ticker div { display: inline-block; animation: tick 34s linear infinite; }
+.ticker i { font-style: normal; color: #000; margin: 0 .6em; }
+@keyframes tick { to { transform: translateX(-50%); } }
+
+section { padding-block: 88px; }
+.head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 44px; }
+.head h2 { margin-top: 12px; }
+.head p { max-width: 44ch; color: var(--muted); }
+
+/* What he does */
+.services { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.service { background: var(--wall); padding: 28px 24px; display: grid; gap: 10px; align-content: start; }
+.service h3 { font-size: 1.05rem; }
+.service p { color: var(--muted); font-size: .95rem; }
+.service .k { font-family: var(--display); font-weight: 800; color: var(--red); font-size: .8rem; letter-spacing: .2em; }
+@media (max-width: 900px) { .services { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 520px) { .services { grid-template-columns: 1fr; } }
+
+/* Gallery wall of past jobs */
+.work { background: var(--wall-2); }
+.gallery { columns: 4 220px; column-gap: 22px; }
+.gallery figure { break-inside: avoid; margin-bottom: 22px; }
+.gallery .frame img { height: auto; }
+.gallery figcaption { margin-top: 10px; display: grid; }
+.gallery figcaption b { font-weight: 600; }
+.gallery figcaption span { color: var(--muted); font-size: .85rem; }
+.gallery .frame { transition: transform .3s ease; }
+.gallery figure:hover .frame { transform: translateY(-4px); }
+
+/* Videos */
+.reel { display: grid; grid-template-columns: repeat(4, 1fr); gap: 22px; }
+.clip { display: grid; gap: 10px; }
+.clip .frame { aspect-ratio: 9 / 16; cursor: pointer; padding: 6px; }
+.clip .frame::after { inset: 6px; }
+.clip button.sound { position: absolute; z-index: 2; right: 14px; bottom: 14px; background: rgba(0,0,0,.65); color: #fff; border: 0; border-radius: 999px; padding: 6px 12px; font: 600 .78rem var(--body); cursor: pointer; }
+.clip p { color: var(--muted); font-size: .9rem; }
+@media (max-width: 900px) { .reel { grid-template-columns: 1fr 1fr; } }
+
+/* Process */
+.process { background: var(--wall-2); }
+.steps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; counter-reset: s; }
+.step { border-top: 2px solid var(--red); padding-top: 20px; display: grid; gap: 10px; align-content: start; }
+.step::before { counter-increment: s; content: "0" counter(s); font-family: var(--display); font-weight: 800; font-size: 2.6rem; line-height: 1; color: transparent; -webkit-text-stroke: 1.5px var(--red); }
+.step h3 { font-size: 1.15rem; }
+.step p { color: var(--muted); max-width: 36ch; }
+@media (max-width: 760px) { .steps { grid-template-columns: 1fr; } }
+
+/* Contact */
+.contact .wrap { display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.contact h2 { font-size: clamp(2.2rem, 6vw, 4.2rem); }
+.contact .lead { margin-top: 20px; color: var(--muted); max-width: 42ch; }
+.channels { display: grid; gap: 12px; }
+.channel { display: flex; justify-content: space-between; align-items: center; gap: 16px; padding: 20px 22px; background: var(--wall-2); border: 1px solid var(--line); border-radius: 4px; text-decoration: none; }
+a.channel:hover { border-color: var(--red); }
+.channel small { display: block; color: var(--red); font-family: var(--display); font-weight: 700; font-size: .68rem; letter-spacing: .3em; text-transform: uppercase; }
+.channel strong { font-size: 1.2rem; font-variant-numeric: tabular-nums; }
+.channel.phone { border-color: var(--red); }
+.copy { background: var(--red); color: #fff; border: 0; border-radius: 3px; padding: 8px 14px; font: 600 .85rem var(--body); cursor: pointer; flex: none; }
+@media (max-width: 800px) { .contact .wrap { grid-template-columns: 1fr; } }
+.lockup { width: min(260px, 70%); margin-top: 36px; display: block; }
+.muted-note { color: var(--muted); font-size: .85rem; text-align: right; }
+footer { border-top: 1px solid var(--line); padding-block: 28px; color: var(--muted); font-size: .85rem; }
+footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="#top" aria-label="Kanvas Masters home">
+      <img src="media/logo-mark.png" alt="">
+      <span class="wordmark"><b>KANVAS</b><span>MASTERS</span></span>
+    </a>
+    <nav>
+      <a href="#work">Work</a>
+      <a href="#videos">Videos</a>
+      <a href="#how">How it works</a>
+      <a class="btn red" href="#contact">Get a quote</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero" style="padding-block:0">
+    <div class="wrap">
+      <div>
+        <p class="masters">Print · Frame · Install</p>
+        <h1>Your walls,<br><span class="outline">framed like</span><br><em>a gallery.</em></h1>
+        <p class="lead">Nkosi and the Kanvas Masters team turn your photos and favourite art into large framed pieces, then bring them to you and hang them. Based in Cosmo City, delivering anywhere in the world.</p>
+        <div class="ctas">
+          <a class="btn red" href="#contact">Get a quote</a>
+          <a class="btn" href="#work">See past jobs</a>
+        </div>
+      </div>
+      <figure class="frame">
+        <video src="media/video-couple-portrait.mp4" poster="media/video-couple-portrait.jpg" muted loop playsinline autoplay></video>
+        <span class="tag">Delivered worldwide</span>
+      </figure>
+    </div>
+  </section>
+
+  <div class="ticker" aria-hidden="true"><div>Family portraits<i>✦</i>Gallery walls<i>✦</i>Office art<i>✦</i>African art<i>✦</i>Installed for you<i>✦</i>Delivered worldwide<i>✦</i>Family portraits<i>✦</i>Gallery walls<i>✦</i>Office art<i>✦</i>African art<i>✦</i>Installed for you<i>✦</i>Delivered worldwide<i>✦</i></div></div>
+
+  <section id="services">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="masters">What we make</p><h2>Big pieces.<br>Clean finish.</h2></div>
+        <p>Every job is printed to size, framed in black and hung level by our own team.</p>
+      </div>
+      <div class="services">
+        <div class="service"><span class="k">K/01</span><h3>Portraits</h3><p>Your couple, family or business photo printed life-size and framed. A real centrepiece.</p></div>
+        <div class="service"><span class="k">K/02</span><h3>Gallery walls</h3><p>Twenty frames or more, planned and spaced so the whole wall tells your family's story.</p></div>
+        <div class="service"><span class="k">K/03</span><h3>Office &amp; boardroom</h3><p>Art that fits the business: Justice, Law, Order for a law firm, bold African art for a boardroom.</p></div>
+        <div class="service"><span class="k">K/04</span><h3>Statement art</h3><p>Gold portraits, Nguni cattle, abstract feathers. Pick a design and we make it to fit your wall.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="work" class="work">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="masters">Past jobs</p><h2>On the wall</h2></div>
+        <p>A few recent installs from Instagram. Every one was printed, framed and hung by Kanvas Masters.</p>
+      </div>
+      <div class="gallery">
+        <figure><div class="frame"><img src="media/gallery-wall.jpg" alt="A full family gallery wall of black and white photos in black frames" loading="lazy"></div><figcaption><b>Family gallery wall</b><span>Home · 30 frames</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/boardroom.jpg" alt="Two colourful African portraits hung in a boardroom" loading="lazy"></div><figcaption><b>Boardroom art</b><span>Office</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/gold-blue-portraits.jpg" alt="Pair of tall blue and gold portraits in a corridor" loading="lazy"></div><figcaption><b>Blue &amp; gold pair</b><span>Corridor</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/nguni-cattle.jpg" alt="Two large Nguni cattle prints going up in a reception area" loading="lazy"></div><figcaption><b>Nguni cattle pair</b><span>Reception</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/justice-law-order.jpg" alt="Three black and gold prints reading Justice, Law and Order in an office" loading="lazy"></div><figcaption><b>Justice · Law · Order</b><span>Law office</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/ceo-portrait.jpg" alt="Large framed portrait of a man beside a white Rolls-Royce" loading="lazy"></div><figcaption><b>CEO portrait</b><span>Commission</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/gold-portrait.jpg" alt="Gold portrait of a woman framed on an office wall" loading="lazy"></div><figcaption><b>Gold portrait</b><span>Office</span></figcaption></figure>
+        <figure><div class="frame"><img src="media/feather-lounge.jpg" alt="Wide abstract feather print above a leather couch" loading="lazy"></div><figcaption><b>Feather abstract</b><span>Lounge</span></figcaption></figure>
+      </div>
+    </div>
+  </section>
+
+  <section id="videos">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="masters">From TikTok</p><h2>Watch the install</h2></div>
+        <p>From the truck to the wall. Tap a video to hear it.</p>
+      </div>
+      <div class="reel">
+        <div class="clip"><figure class="frame"><video src="media/video-gallery-wall.mp4" poster="media/video-gallery-wall.jpg" muted loop playsinline autoplay preload="metadata"></video><button class="sound" type="button">Sound off</button></figure><p>Family wall with a centre portrait</p></div>
+        <div class="clip"><figure class="frame"><video src="media/video-couple-portrait.mp4" poster="media/video-couple-portrait.jpg" muted loop playsinline preload="metadata"></video><button class="sound" type="button">Sound off</button></figure><p>Couple portrait, delivered</p></div>
+        <div class="clip"><figure class="frame"><video src="media/video-family-portrait.mp4" poster="media/video-family-portrait.jpg" muted loop playsinline preload="metadata"></video><button class="sound" type="button">Sound off</button></figure><p>Family portrait arriving home</p></div>
+        <div class="clip"><figure class="frame"><video src="media/video-portrait-delivery.mp4" poster="media/video-portrait-delivery.jpg" muted loop playsinline preload="metadata"></video><button class="sound" type="button">Sound off</button></figure><p>Life-size portrait</p></div>
+      </div>
+      <p style="margin-top:36px"><a class="btn" href="https://www.tiktok.com/@thefarmhustler" target="_blank" rel="noopener">More on TikTok</a></p>
+    </div>
+  </section>
+
+  <section id="how" class="process">
+    <div class="wrap">
+      <div class="head">
+        <div><p class="masters">How it works</p><h2>Three steps</h2></div>
+      </div>
+      <div class="steps">
+        <div class="step"><h3>Send your photo</h3><p>WhatsApp us your picture, or choose a design from our collection. Tell us the wall and size.</p></div>
+        <div class="step"><h3>We print &amp; frame</h3><p>Printed large and sharp, finished in a black frame made to fit.</p></div>
+        <div class="step"><h3>We deliver &amp; hang it</h3><p>Around Johannesburg our team delivers, measures and hangs it straight. Further away, we ship it safely anywhere in the world.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <div class="wrap">
+      <div>
+        <p class="masters">Let's connect</p>
+        <h2>Got a bare wall?</h2>
+        <p class="lead">Send Nkosi a text with your photo or idea and the wall size, and he'll come back with a price.</p>
+        <img class="lockup" src="media/logo.png" alt="Kanvas Masters logo">
+      </div>
+      <div class="channels">
+        <div class="channel phone"><span><small>Text Nkosi</small><strong id="phone">063 173 7191</strong></span><button class="copy" id="copy" type="button">Copy</button></div>
+        <div class="channel"><span><small>Studio</small><strong>Cosmo Junction, Cosmo City</strong></span><span class="muted-note">Ships worldwide</span></div>
+        <a class="channel" href="https://wa.me/27631737191" target="_blank" rel="noopener"><span><small>WhatsApp</small><strong>Open chat</strong></span><span aria-hidden="true">↗</span></a>
+        <a class="channel" href="https://www.instagram.com/kanvasmasters/" target="_blank" rel="noopener"><span><small>Instagram</small><strong>@kanvasmasters</strong></span><span aria-hidden="true">↗</span></a>
+        <a class="channel" href="https://www.tiktok.com/@thefarmhustler" target="_blank" rel="noopener"><span><small>TikTok</small><strong>@thefarmhustler</strong></span><span aria-hidden="true">↗</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap"><span>© 2026 Kanvas Masters · Cosmo City, Johannesburg</span><span>Print · Frame · Install · Delivered worldwide</span></div>
+</footer>
+
+<script>
+  // Videos: autoplay muted when on screen, tap to toggle sound.
+  const vids = [...document.querySelectorAll('.clip video')];
+  const io = 'IntersectionObserver' in window ? new IntersectionObserver(es => es.forEach(e => {
+    if (e.isIntersecting) e.target.play().catch(() => {}); else e.target.pause();
+  }), { threshold: .4 }) : null;
+  vids.forEach(v => {
+    io && io.observe(v);
+    const fig = v.closest('.frame'), btn = fig.querySelector('.sound');
+    btn.addEventListener('click', (e) => e.stopPropagation());
+    fig.addEventListener('click', () => {
+      const turnOn = v.muted;
+      vids.forEach(o => { o.muted = true; o.closest('.frame').querySelector('.sound').textContent = 'Sound off'; });
+      v.muted = !turnOn; btn.textContent = turnOn ? 'Sound on' : 'Sound off';
+      v.play().catch(() => {});
+    });
+  });
+  // Copy phone number
+  const copyBtn = document.getElementById('copy');
+  copyBtn.addEventListener('click', () => {
+    const num = document.getElementById('phone').textContent;
+    const done = () => { copyBtn.textContent = 'Copied'; setTimeout(() => copyBtn.textContent = 'Copy', 1600); };
+    (navigator.clipboard ? navigator.clipboard.writeText(num) : Promise.reject()).then(done).catch(() => {
+      const r = document.createRange(); r.selectNodeContents(document.getElementById('phone'));
+      const s = getSelection(); s.removeAllRanges(); s.addRange(r);
+    });
+  });
+</script>
+</body>
+</html>

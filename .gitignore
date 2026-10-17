@@ -1,0 +1,13 @@
+node_modules/
+package-lock.json
+extract-frames.mjs
+build-media.mjs
+package.json
+
+# Raw uploads (canonical copies live in media/)
+1d010df8-de27-4560-b249-4d1c42f9e8c7.mp4
+81f8d808-7d0f-4c7e-bff9-8dacb14839c6.mp4
+99ce5de0-0d5c-42cc-87d7-bfb8eac06d1d.mp4
+bb308c37-3010-49c9-8d9b-e729bd58d4e4.mp4
+315632836_458830433058646_4978384429618741588_n.jpg
+923410b3-aa73-4b66-9a8d-cae52b51f996.jfif
